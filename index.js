@@ -1,24 +1,16 @@
-function main() {
-
-    const ip = "10.0.2.14/24";
-    const [host, netmask] = ip.split('/');
-    const host_bin = addr_to_bin(host);
-    const netmask_bin = addr_to_bin(netmask);
-    const rx_bin = subnet_addr(host_bin, netmask_bin);
-    const rx = bin_to_addr(rx_bin);
-    const bd_bin = broadcast_addr(host_bin, netmask_bin);
-    const bd = bin_to_addr(bd_bin);
-
-    console.log("ip : " + ip);
-    console.log("hs : " + host + " -> " + host_bin);
-    console.log("nm : " + netmask + " -> " + netmask_bin);
-    console.log("rx : " + rx + " -> " + rx_bin);
-    console.log("bd : " + bd + " -> " + bd_bin);
-    console.log("number of hosts : " + hosts_count(netmask_bin));
-
+function init() {
+    document.getElementById('ipform').addEventListener('submit', peek);
 }
 
-main();
+
+function peek(event) {
+    event.preventDefault();
+    const host = addr_to_bin(document.getElementById('ip').value);
+    const netmask = addr_to_bin(document.getElementById('netmask').value);
+    document.getElementById('subnet-res').textContent = bin_to_addr(subnet_addr(host, netmask));
+    document.getElementById('broadcast-res').textContent = bin_to_addr(broadcast_addr(host, netmask));
+    document.getElementById('hosts-res').textContent = hosts_count(netmask);
+}
 
 // converts dotted decimal notation or CIDR notation to its binary equivalent
 // 92.255.0.254 -> 01011100111111110000000011111110
@@ -56,7 +48,7 @@ function heaviside(x) {
 
 // applies a bitwise "and" to the host address and the subnet mask to obtain the subnet address
 function subnet_addr(host_addr, netmask) {
-    return (parseInt(host_addr, 2) & parseInt(netmask, 2)).toString(2).padStart(32, '0');
+    return ((parseInt(host_addr, 2) & parseInt(netmask, 2))>>>0).toString(2).padStart(32, '0');
 }
 
 // calculates the 1's complement of a binary number
@@ -66,5 +58,5 @@ function bin_complement(bin) {
 
 // applies a bitwise "or" to the host address and the one's complement of the subnet mask to obtain the broadcast address
 function broadcast_addr(host_addr, netmask) {
-    return (parseInt(host_addr, 2) | parseInt(bin_complement(netmask), 2)).toString(2).padStart(32, '0');
+    return ((parseInt(host_addr, 2) | parseInt(bin_complement(netmask), 2))>>>0).toString(2).padStart(32, '0');
 }
