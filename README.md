@@ -1,6 +1,6 @@
-# iPeek
+# IPeek
 
-**iPeek** is a lightweight web tool that helps you quickly calculate key information about an IP network.
+**IPeek** is a lightweight web tool that helps you quickly calculate key information about an IP network.
 
 Given an IP address and a subnet mask, iPeek will instantly compute:
 
