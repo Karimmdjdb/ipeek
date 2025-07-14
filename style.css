@@ -2,6 +2,7 @@
     font-family: 'Fira Code';
     font-weight: normal;
     margin: 0;
+    color: #D4D4D4;
 }
 
 body {
@@ -11,20 +12,31 @@ body {
     align-items: center;
 }
 
-#ipform {
-    padding: 20px;
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#title, #intro, #ipform, #result, #outro {
+    padding: 0 20px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #ipform * {
     display: inline-block;
 }
+
 #ipform p {
     margin: 3px 0;
 }
 
-* {
-    color: #D4D4D4;
-}
 .comm {
     color: #6A9955;
 }
@@ -50,9 +62,11 @@ button {
     border-radius: 5px;
     margin-top: 10px;
 }
+
 button:hover {
     background-color: #60646C;
 }
+
 #btn {
     display: flex;
     align-items: center;
@@ -60,12 +74,10 @@ button:hover {
     gap: 3px;
 }
 
-#result {
-    padding: 20px;
-}
 #result * {
     display: inline-block;
 }
+
 #result p {
     color: #CE9178;
 }

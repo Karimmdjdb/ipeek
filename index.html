@@ -6,22 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
     <script src="index.js"></script>
-    <title>portfolio</title>
+    <title>IPeek</title>
 </head>
 <body>
     <div id="container">
+        <div id="title">
+            <h1>IP.e.e.k</h1>
+        </div>
+        <div id="intro">
+            <p class="comm">/* Tired of guessing what’s behind an IP and a subnet mask ?</p>
+            <p class="comm">&nbsp;&nbsp;&nbsp;IPeek makes subnetting simple and fast ! */</p>
+        </div>
         <form id="ipform">
             <p class="comm">// enter ip@ ex : 143.15.0.12</p>
             <br>
             <p><strong class="keyword">let</strong> <strong class="var">ip</strong> = </p>
-            <input id="ip" name="ip" type="text" pattern="^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$">
+            <input required id="ip" name="ip" type="text" pattern="^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$">
             <br>
             <p class="comm">// enter netmask in dotted decimal notation or CIDR notation</p>
             <br>
             <p class="comm">// ex : 255.255.255.0 or 24</p>
             <br>
             <p><strong class="keyword">let</strong> <strong class="var">netmask</strong> = </p>
-            <input id="netmask" name="netmask" type="text" pattern="^(((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)|(3[0-2]|[1-2]\d|[1-9]))$">
+            <input required id="netmask" name="netmask" type="text" pattern="^(((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)|(3[0-2]|[1-2]\d|[1-9]))$">
             <br>
             <button type="submit">
                 <span id="btn">
@@ -30,11 +37,20 @@
             </button>
         </form>
         <div id="result">
+            <p>- - - result - - - -</p>
+            <br>
             <p>* Subnet @ :&nbsp;</p><p id="subnet-res"></p>
             <br>
             <p>* Broadcast @ :&nbsp;</p><p id="broadcast-res"></p>
             <br>
             <p>* Number of hosts :&nbsp;</p><p id="hosts-res"></p>
+        </div>
+        <div id="outro">
+            <p class="comm">/*</p>
+            <p class="comm" id="year">&nbsp;* copyright</p>
+            <p class="comm">&nbsp;* @author Karim Medjdoub</p>
+            <p class="comm">&nbsp;* @see @link <a href="https://medjdoub-karim.fr">medjdoub-karim.fr</a></p>
+            <p class="comm">&nbsp;*/</p>
         </div>
     </div>
     <script>init();</script>

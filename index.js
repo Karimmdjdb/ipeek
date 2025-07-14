@@ -1,5 +1,6 @@
 function init() {
     document.getElementById('ipform').addEventListener('submit', peek);
+    document.getElementById('year').innerHTML = `&nbsp;* copyright - ${new Date().getFullYear()}`;
 }
 
 
